@@ -6,7 +6,7 @@
 /*   By: dmoureu- <dmoureu-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/26 17:53:36 by dmoureu-          #+#    #+#             */
-/*   Updated: 2016/05/26 18:22:52 by dmoureu-         ###   ########.fr       */
+/*   Updated: 2016/05/31 15:30:03 by dmoureu-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ t_chr	*addtchar(t_chr **list, t_chr *elem)
 	current = *list;
 	if (!*list)
 	{
-		elem->next = elem;
+		//elem->next = elem;
 		*list = elem;
 	}
 	else
@@ -43,4 +43,17 @@ t_chr	*addtchar(t_chr **list, t_chr *elem)
 		current->next = elem;
 	}
 	return (*list);
+}
+
+void 	printtchar(t_chr *line)
+{
+	t_chr	*current;
+
+	current = line;
+	while (current)
+	{
+		ft_putchar(current->chr);
+		current = current->next;
+	}
+	ft_putchar('\n');
 }

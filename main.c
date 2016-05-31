@@ -6,7 +6,7 @@
 /*   By: dmoureu- <dmoureu-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/02 11:33:04 by dmoureu-          #+#    #+#             */
-/*   Updated: 2016/05/26 18:33:07 by dmoureu-         ###   ########.fr       */
+/*   Updated: 2016/05/31 15:27:19 by dmoureu-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,17 @@ void	execcommand(char *line, t_shell *shell)
 	}
 }
 
+void	key(t_shell *shell, char *key) {
+	t_chr	*new;
+
+	if (key[0] > 0 && key[1] == 0 && key[1] == 0 && key[2] == 0 && key[3] == 0)
+	{
+		//is ascii char
+		new = newtchar((char)key[0]);
+		shell->line = addtchar(&shell->line, new);
+	}
+}
+
 int		main(int ac, char **av, char **environ)
 {
 	//char	*line;
@@ -68,7 +79,7 @@ int		main(int ac, char **av, char **environ)
 	shell = newshell(environ);
 	while (42)
 	{
-		ft_printf("new while \n");
+		//ft_printf("new while \n");
 		//prompt();
 		/*
 		if (!get_next_line(0, &line))
@@ -89,6 +100,8 @@ int		main(int ac, char **av, char **environ)
 		read(0, buffer, 4);
 		ft_printf(" %d %d %d %d \n",
 		buffer[0], buffer[1], buffer[2], buffer[3]);
+		key(shell, buffer);
+		printtchar(shell->line);
 		ft_bzero(buffer, 4);
 	}
 }

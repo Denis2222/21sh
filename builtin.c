@@ -6,7 +6,7 @@
 /*   By: dmoureu- <dmoureu-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/01 22:05:31 by dmoureu-          #+#    #+#             */
-/*   Updated: 2016/05/26 17:41:47 by dmoureu-         ###   ########.fr       */
+/*   Updated: 2016/05/31 14:55:24 by dmoureu-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,9 @@
 
 static void	cmdstokeyvalue(char **cmds, char **key, char **value)
 {
-	char **tab;
+	char **tabchr;
 
-	tab = NULL;
+	tabchr = NULL;
 	if (ft_tablen(cmds) == 3)
 	{
 		*key = cmds[1];
@@ -24,11 +24,11 @@ static void	cmdstokeyvalue(char **cmds, char **key, char **value)
 	}
 	if (ft_tablen(cmds) == 2 && ft_strchr(cmds[1], '='))
 	{
-		tab = ft_strsplit(cmds[1], '=');
-		if (ft_tablen(tab) == 2)
+		tabchr = ft_strsplit(cmds[1], '=');
+		if (ft_tablen(tabchr) == 2)
 		{
-			*key = tab[0];
-			*value = tab[1];
+			*key = tabchr[0];
+			*value = tabchr[1];
 		}
 	}
 }

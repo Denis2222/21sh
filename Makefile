@@ -10,7 +10,7 @@ SRCS = main.c \
 	   cd.c
 
 NAME = 21sh
-GCC_FLAGS = -Wall -Werror -Wextra
+GCC_FLAGS = -Wall -Werror -Wextra -g
 CC = gcc $(GCC_FLAGS)
 SRCDIR = ./
 OBJDIR = ./objs

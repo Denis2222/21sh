@@ -6,7 +6,7 @@
 /*   By: dmoureu- <dmoureu-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/29 13:41:17 by dmoureu-          #+#    #+#             */
-/*   Updated: 2016/05/26 18:49:33 by dmoureu-         ###   ########.fr       */
+/*   Updated: 2016/05/31 15:27:17 by dmoureu-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,13 @@ typedef struct		s_env
 	struct s_env	*next;
 }					t_env;
 
+typedef struct		s_chr
+{
+	char			chr;
+	struct s_chr	*prev;
+	struct s_chr	*next;
+}					t_chr;
+
 typedef struct		s_shell
 {
 	t_env			*env;
@@ -35,14 +42,10 @@ typedef struct		s_shell
 	struct termios	*tios;
 	int				sizemax;
 	int				wbl;
+	t_chr			*line;
 }					t_shell;
 
-typedef struct		s_chr
-{
-	char			chr;
-	struct s_chr	*prev;
-	struct s_chr	*next;
-}					t_chr;
+
 
 t_shell				*newshell(char **environ);
 void				shell_env_refresh(t_shell *shell);
@@ -70,4 +73,7 @@ int					body(void);
 
 char				*ft_replacechrbystr(char *str, char old, char *pwd);
 
+t_chr	*newtchar(char chr);
+t_chr	*addtchar(t_chr **list, t_chr *elem);
+void 	printtchar(t_chr *line);
 #endif
