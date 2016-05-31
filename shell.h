@@ -6,7 +6,7 @@
 /*   By: dmoureu- <dmoureu-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/29 13:41:17 by dmoureu-          #+#    #+#             */
-/*   Updated: 2016/05/31 15:27:17 by dmoureu-         ###   ########.fr       */
+/*   Updated: 2016/05/31 18:51:48 by dmoureu-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,9 +43,10 @@ typedef struct		s_shell
 	int				sizemax;
 	int				wbl;
 	t_chr			*line;
+	int				cur_pos;
 }					t_shell;
 
-
+int					putintc(int c);
 
 t_shell				*newshell(char **environ);
 void				shell_env_refresh(t_shell *shell);
@@ -73,7 +74,13 @@ int					body(void);
 
 char				*ft_replacechrbystr(char *str, char old, char *pwd);
 
-t_chr	*newtchar(char chr);
-t_chr	*addtchar(t_chr **list, t_chr *elem);
-void 	printtchar(t_chr *line);
+t_chr				*newtchar(char chr);
+t_chr				*addtchar(t_chr **list, t_chr *elem);
+t_chr				*addtcharto(t_chr **list, t_chr *elem, int to);
+int					tcharlen(t_chr *list);
+void				printtchar(t_chr *line);
+void				printtcharfrom(t_chr *line, int i);
+int					tcharlenfrom(t_chr *line, int i);
+void				debugtchar(t_chr *line);
+
 #endif

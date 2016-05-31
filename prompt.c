@@ -6,7 +6,7 @@
 /*   By: dmoureu- <dmoureu-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/01 22:06:44 by dmoureu-          #+#    #+#             */
-/*   Updated: 2016/05/26 17:41:58 by dmoureu-         ###   ########.fr       */
+/*   Updated: 2016/05/31 18:42:12 by dmoureu-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,6 @@ void	prompt(void)
 
 	i = 0;
 	buf = getdir();
-	ft_printf("{red}$[%s]> {eoc}", buf);
+	ft_printf("{green}$[%s]> {eoc}", buf);
 	free(buf);
 }

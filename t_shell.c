@@ -6,7 +6,7 @@
 /*   By: dmoureu- <dmoureu-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/01 22:06:54 by dmoureu-          #+#    #+#             */
-/*   Updated: 2016/05/26 18:49:24 by dmoureu-         ###   ########.fr       */
+/*   Updated: 2016/05/31 18:00:56 by dmoureu-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,16 +29,13 @@ void	updateshell(t_shell *shell)
 
 void	selectmodeon(t_shell *shell)
 {
-	tcsetattr(0, TCSADRAIN, shell->tios);
-	tputs(tgetstr("vi", NULL), 1, putintc);
-	tputs(tgetstr("ti", NULL), 1, putintc);
+	if (tcsetattr(0, TCSADRAIN, shell->tios) == -1)
+		perror("tcsetattr error");
 }
 
 void	selectmodeoff(t_shell *shell)
 {
 	tcsetattr(0, TCSADRAIN, shell->tiosold);
-	tputs(tgetstr("te", NULL), 1, putintc);
-	tputs(tgetstr("ve", NULL), 1, putintc);
 }
 
 t_shell	*newshell(char **environ)
@@ -58,7 +55,8 @@ t_shell	*newshell(char **environ)
 	shell->tios->c_lflag &= ~(ICANON);
 	shell->tios->c_lflag &= ~(ECHO);
 	shell->tios->c_cc[VMIN] = 1;
-	shell->tios->c_cc[VTIME] = 100;
+	shell->tios->c_cc[VTIME] = 0;
+	shell->cur_pos = 0;
 	selectmodeon(shell);
 	return (shell);
 }
